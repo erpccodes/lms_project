@@ -20,21 +20,21 @@ pipeline {
         }
         stage('Backend Test') {
             steps {
-                dir('backend') {
+                dir('backend/backend') {
                     sh 'mvn test'
                 }
             }
         }
         stage('Backend Package') {
             steps {
-                dir('backend') {
+                dir('backend/backend') {
                     sh 'mvn package'
                 }
             }
         }
         stage('Backend Deploy') {
             steps {
-                dir('backend') {
+                dir('backend/backend') {
                     sh '''
                     docker build -t lms_backend .
                     docker run -d -p 8080:8080 --name lms_backend \
