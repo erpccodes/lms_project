@@ -14,28 +14,28 @@ pipeline {
         stage('Backend Build') {
             steps {
                 dir('backend') {
-                    sh 'mvn clean install'
+                    bat 'mvn clean install'
                 }
             }
         }
         stage('Backend Test') {
             steps {
                 dir('backend/backend') {
-                    sh 'mvn test'
+                    bat 'mvn test'
                 }
             }
         }
         stage('Backend Package') {
             steps {
                 dir('backend/backend') {
-                    sh 'mvn package'
+                    bat 'mvn package'
                 }
             }
         }
         stage('Backend Deploy') {
             steps {
                 dir('backend/backend') {
-                    sh '''
+                    bat '''
                     docker build -t lms_backend .
                     docker run -d -p 8080:8080 --name lms_backend \
                         -e DB_URL=${DB_URL} \
@@ -49,7 +49,7 @@ pipeline {
         stage('Frontend Build') {
             steps {
                 dir('frontend') {
-                    sh '''
+                    bat '''
                     npm install
                     npm run build
                     '''
@@ -59,7 +59,7 @@ pipeline {
         stage('Frontend Deploy') {
             steps {
                 dir('frontend') {
-                    sh '''
+                    bat '''
                     docker build -t lms_frontend .
                     docker run -d -p 4200:80 --name lms_frontend lms_frontend
                     '''
