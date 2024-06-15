@@ -11,4 +11,4 @@ COPY target/backend.jar /app/backend.jar
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "lms-backend.jar"]
+ENTRYPOINT ["java", "-jar", "backend.jar"]

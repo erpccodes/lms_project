@@ -41,12 +41,12 @@ pipeline {
             steps {
                 dir('backend') {
                     bat '''
-                    docker build -t lms_backend .
-                    docker run -d -p 8080:8080 --name lms_backend \
+                    docker build -t backend .
+                    docker run -d -p 8080:8080 --name backend \
                         -e DB_URL=${DB_URL} \
                         -e DB_USERNAME=${DB_USERNAME} \
                         -e DB_PASSWORD=${DB_PASSWORD} \
-                        lms_backend
+                        backend
                     '''
                 }
             }
