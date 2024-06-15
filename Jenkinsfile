@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+ tools {
+        maven 'Maven 3.9.7'
+    }
+
     environment {
         DB_URL = 'jdbc:mysql://localhost:3306/lms_db'
         DB_USERNAME = 'root'
@@ -13,7 +18,7 @@ pipeline {
         }
         stage('Backend Build') {
             steps {
-                dir('backend') {
+                dir('backend/backend') {
                     bat 'mvn clean install'
                 }
             }
