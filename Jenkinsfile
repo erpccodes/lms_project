@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Backend Deploy') {
             steps {
-                dir('backend/backend') {
+                dir('backend') {
                     bat '''
                     docker build -t lms_backend .
                     docker run -d -p 8080:8080 --name lms_backend \
