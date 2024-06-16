@@ -5,7 +5,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the JAR file from the host to the container
-COPY target/backend.jar /app/backend.jar
+COPY target/backend.jar backend.jar
 
 # Expose the port the application runs on
 EXPOSE 8080
