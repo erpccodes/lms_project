@@ -42,6 +42,7 @@ pipeline {
                 dir('backend') {
                     bat '''
                     docker build -t backend .
+		    docker rm -f backend || true
                     docker run -d -p 8081:8080 --name backend \
                         -e DB_URL=${DB_URL} \
                         -e DB_USERNAME=${DB_USERNAME} \
