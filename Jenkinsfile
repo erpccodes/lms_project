@@ -54,7 +54,7 @@ pipeline {
         }
         stage('Frontend Build') {
             steps {
-                dir('frontend') {
+                dir('frontend/lms-frontend') {
                     bat '''
                     npm install
                     npm run build
