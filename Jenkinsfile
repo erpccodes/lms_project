@@ -67,7 +67,7 @@ pipeline {
                 dir('frontend') {
                     bat '''
                     docker build -t lms_frontend .
-                    docker run -d -p 4200:80 --name lms_frontend lms_frontend
+                    docker run -d -p 4200:80 --name lms_frontend lms-frontend
                     '''
                 }
             }
