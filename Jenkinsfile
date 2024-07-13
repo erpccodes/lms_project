@@ -37,6 +37,24 @@ pipeline {
                 }
             }
         }
+		
+		stage('Backend SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') { // Replace with your SonarQube server name
+                    dir('backend/backend') {
+                        bat 'mvn sonar:sonar'
+                    }
+                }
+            }
+        }
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+		
         stage('Backend Deploy') {
             steps {
                 dir('backend') {
