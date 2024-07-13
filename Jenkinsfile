@@ -50,7 +50,7 @@ pipeline {
         stage('Quality Gate') {
             steps {
                 script {
-					sleep(60)
+					//sleep(60)       only used a bypass of webhook This delay gives SonarQube additional time to complete the analysis and update the Quality Gate status.
                     echo "Checking Quality Gate status..."
                     timeout(time: 20, unit: 'MINUTES') {
                         def qg = waitForQualityGate()
